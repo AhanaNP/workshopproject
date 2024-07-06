@@ -1,0 +1,17 @@
+{% extends 'workmanager/workmanagerbase.html'%}
+{% load crispy_forms_tags %}
+
+{% block content%}
+
+<form method="post">
+    {% csrf_token %}
+
+    
+{{managerworkupdate|crispy}}
+
+<button type="submit" class="btn btn-success">UPDATE</button>
+
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'customer/customerbase.html' %}
+
+
+ {% block content %}
+<form method="post">
+<div class="container-fluid ">
+    <table class="table table-bordered border-primary ">
+        <thead class="text-light bg-dark">
+        <tr>
+        <th>SL NO</th>
+        <th>DATE</th>
+        <th>START TIME</th>
+        <th>END TIME</th>
+<!--        <th>STATUS</th>-->
+        <th>APPOINTMENT</th>
+        </tr>
+        </thead>
+
+        <tbody class="table table-dark table-striped-columns">
+        {% for i in  data %}
+        <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.date}}</td>
+        <td>{{i.starting_time}}</td>
+        <td>{{i.ending_time}}</td>
+<!--        <td>{{i.status}}</td>-->
+        <td><a type="submit" class=" btn btn-outline-success" href=" {% url 'bookingschedule' i.id %}">BOOK SLOT</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+
+    <div>
+
+        {% for message in messages %}
+        <div class="alert alert-primary" role="alert">
+        {{message}}
+        </div>
+            {% endfor %}
+    </div>
+    </table>
+</div>
+</form>
+
+{% endblock %}

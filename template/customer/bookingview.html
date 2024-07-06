@@ -1,0 +1,37 @@
+{% extends 'customer/customerbase.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<table class="table table-light text-dark table-striped">
+    <thead>
+    <tr>
+    <th>Date</th>
+    <th>Starting Time</th>
+    <th>Ending Time</th>
+    <th>Status</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for i in bookingview %}
+    <tr>
+        <td>{{i.schedule.date}}</td>
+        <td>{{i.schedule.starting_time}}</td>
+        <td>{{i.schedule.ending_time}}</td>
+        <td>
+            {% if i.status == 0 %}
+            <p class="text-primary">Pending</p>
+            {% elif i.status == 1 %}
+            <p class="text-success">Approved</p>
+            {% else %}
+            <p class="text-danger">Rejected</p>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'admin/adminbase.html' %}
+{% load crispy_forms_tags %}
+
+
+ {% block content %}
+
+
+    <form method="post">
+        {% csrf_token %}
+        {{create|crispy}}
+        <button type="submit" class="btn btn-success btn-sm" >CREATE</button>
+    </form>
+
+
+{% endblock %}

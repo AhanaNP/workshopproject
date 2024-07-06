@@ -1,0 +1,43 @@
+{% extends 'customer/customerbase.html' %}
+
+
+ {% block content %}
+
+    <table class="table table-light text-dark table-striped">
+        <thead class="text-dark ">
+        <tr>
+            <th>Sl No</th>
+            <th>Feedback</th>
+            <th>Date</th>
+            <th>Reply</th>
+        </tr>
+        </thead>
+        {% for i in  data %}
+        <tbody>
+        <tr>
+            <td>
+                {{forloop.counter}}
+            </td>
+            <td>
+
+                {{i.feedback}}</td>
+            <td>{{i.date}}</td>
+            <td>
+
+                {% if i.reply == None %}
+                <p>No reply</p>
+                {% else %}
+
+                <p>{{i.reply}}</p>
+
+                {% endif %}
+
+            </td>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+
+
+
+{% endblock %}

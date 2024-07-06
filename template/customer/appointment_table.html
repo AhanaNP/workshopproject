@@ -1,0 +1,35 @@
+{%  extends 'customer/customerbase.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+
+
+        <div class="form-group">
+            <label class="form-control">DATE</label>
+            <input required class="form-control" readonly value="{{schedule.date}}">
+        </div>
+        <div class="form-group">
+            <label class="form-control">STARTING TIME</label>
+            <input required class="form-control" readonly value="{{schedule.starting_time}}">
+        </div>
+
+        <div class="form-group">
+            <label class="form-control">ENDING TIME</label>
+            <input required class="form-control" readonly value="{{schedule.ending_time}}">
+        </div>
+
+
+
+        <button type="submit" class="btn btn-success">SUBMIT</button>
+
+
+</form>
+
+
+
+
+
+{% endblock %}

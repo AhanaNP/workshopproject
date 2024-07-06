@@ -1,0 +1,46 @@
+{% extends 'admin/adminbase.html' %}
+
+
+ {% block content %}
+<div class="container-fluid ">
+    <table class="table table-dark table-striped-columns table-bordered" >
+        <thead class="text-light ">
+        <tr>
+            <th>SL No</th>
+            <th>NAME</th>
+            <th>FEEDBACK</th>
+            <th>DATE</th>
+            <th>REPLY</th>
+        </tr>
+        </thead>
+        {% for i in  data %}
+        <tbody>
+        <tr>
+            <td>
+                {{forloop.counter}}
+            </td>
+            <td>
+                {{i.user}}
+            </td>
+            <td>
+                {{i.feedback}}</td>
+            <td>{{i.date}}</td>
+            <td>
+
+                {% if i.reply == None %}
+                <button type="submit" class="btn btn-success"><a href="{% url 'feedupdate' i.id %}">Reply</a></button>
+                {% else %}
+
+                <p>{{i.reply}}</p>
+
+                {% endif %}
+
+            </td>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+</div>
+
+
+{% endblock %}

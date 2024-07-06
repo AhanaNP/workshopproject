@@ -1,0 +1,39 @@
+{% extends 'admin/adminbase.html' %}
+
+
+ {% block content %}
+<div class="container-fluid ">
+
+    <table class="table table-bordered border-primary table-hover">
+        <thead class="text-light bg-dark">
+        <tr>
+        <th>SL NO</th>
+        <th>USER</th>
+        <th>DATE</th>
+        <th>START TIME</th>
+        <th>END TIME</th>
+        <th>WORK ASSIGN</th>
+        </tr>
+        </thead>
+
+        <tbody class="table table-dark text-light table-striped-columns">
+        {% for i in  data %}
+        <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.user}}</td>
+        <td>{{i.schedule.date}}</td>
+        <td>{{i.schedule.starting_time}}</td>
+        <td>{{i.schedule.ending_time}}</td>
+        <td>
+            <a type="submit" class="btn btn-warning" href="{% url 'creatework' i.id %}">CREATE WORK</a>
+        </td>
+
+        </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+
+
+{% endblock %}

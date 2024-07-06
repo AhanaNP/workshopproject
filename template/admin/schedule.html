@@ -1,0 +1,41 @@
+{% extends 'admin/adminbase.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<div class="container-fluid col-lg-8">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">Add Schedule</strong>
+        </div>
+        {% for message in messages %}
+        <div class="alert alert-primary" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+
+
+        <div class="card-body">
+            <!-- Credit Card -->
+            <div id="pay-invoice">
+                <div class="card-body">
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{data|crispy}}
+                        </div>
+<div class="form-actions form-group ">
+                            <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

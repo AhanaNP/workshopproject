@@ -1,0 +1,47 @@
+{% extends 'workmanager/workmanagerbase.html'%}
+
+{% block content %}
+<div class="container-fluid">
+<form method="post">
+    {% csrf_token %}
+    <table class="table table-light table-sm">
+  <thead class="text-dark bg-light">
+    <tr>
+        <th scope="col">SL NO</th>
+        <th scope="col">CUSTOMER</th>
+        <th scope="col">CATEORY</th>
+        <th scope="col">VEHICLE NO</th>
+        <th scope="col">VEHICLE NAME </th>
+        <th scope="col">VEHICLE MODEL </th>
+        <th scope="col">VEHICLE BRAND </th>
+        <th scope="col">PROBLEM</th>
+        <th scope="col">DATE</th>
+        <th scope="col">COST</th>
+        <th scope="col">STATUS</th>
+        <th scope="col">EDIT</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in data %}
+
+    <tr class="text-dark bg-light">
+        <td>{{forloop.counter}}</td>
+        <td>{{i.customer}}</td>
+        <td>{{i.category}}</td>
+        <td>{{i.vehicle_no}}</td>
+        <td>{{i.vehicle_name}}</td>
+        <td>{{i.vehicle_model}}</td>
+        <td>{{i.vehicle_brand}}</td>
+        <td>{{i.problem}}</td>
+        <td>{{i.date}}</td>
+        <td>{{i.cost}}</td>
+        <td>{{i.status}}</td>
+        <td><a class="btn" href="{% url 'managerworkupdate' i.id %}" ><i class="bi bi-pencil"></i></a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</form>
+</div>
+
+{% endblock %}
